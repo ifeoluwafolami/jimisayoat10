@@ -18,6 +18,8 @@ import { Heart, Mail, MessageCircle, Globe,
  } from "lucide-react";
 // import jsPDF from "jspdf";
 
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000"
+
 const marqueeImages = [
     image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image1, image2, image3, image4
 ];
@@ -233,13 +235,13 @@ export default function App() {
     useEffect(() => {
         const fetchNotes = async () => {
             try {
-                const response = await fetch(`https://jimiat10.onrender.com/api/notes`); 
+                const response = await fetch(`${API_BASE}/api/notes`); 
                 if (!response.ok) {
                     throw new Error("Failed to fetch notes.");
                 }
                 const data = await response.json();
                 setNotes(data);
-                // const downloadResponse = await fetch(`https://jimiat10.onrender.com/api/notes/download`); 
+                // const downloadResponse = await fetch(`${API_BASE}/api/notes/download`); 
                 // if (!downloadResponse.ok) {
                 //     throw new Error("Failed to fetch notes.");
                 // }
@@ -257,7 +259,7 @@ export default function App() {
 
     // API functions
     const submitNote = async (message: string, signature: string): Promise<Note> => {
-        const response = await fetch(`https://jimiat10.onrender.com/api/notes`, {
+        const response = await fetch(`${API_BASE}/api/notes`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message, signature })
@@ -270,7 +272,7 @@ export default function App() {
     };
 
     const updateNote = async (noteId: string, message: string, signature: string): Promise<Note> => {
-        const response = await fetch(`https://jimiat10.onrender.com/api/notes/${noteId}`, {
+        const response = await fetch(`${API_BASE}/api/notes/${noteId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message, signature })
