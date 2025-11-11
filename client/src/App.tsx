@@ -233,13 +233,13 @@ export default function App() {
     useEffect(() => {
         const fetchNotes = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/notes`); 
+                const response = await fetch(`https://jimiat10.onrender.com/api/notes`); 
                 if (!response.ok) {
                     throw new Error("Failed to fetch notes.");
                 }
                 const data = await response.json();
                 setNotes(data);
-                // const downloadResponse = await fetch(`http://localhost:3000/api/notes/download`); 
+                // const downloadResponse = await fetch(`https://jimiat10.onrender.com/api/notes/download`); 
                 // if (!downloadResponse.ok) {
                 //     throw new Error("Failed to fetch notes.");
                 // }
@@ -257,7 +257,7 @@ export default function App() {
 
     // API functions
     const submitNote = async (message: string, signature: string): Promise<Note> => {
-        const response = await fetch(`http://localhost:3000/api/notes`, {
+        const response = await fetch(`https://jimiat10.onrender.com/api/notes`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message, signature })
@@ -270,7 +270,7 @@ export default function App() {
     };
 
     const updateNote = async (noteId: string, message: string, signature: string): Promise<Note> => {
-        const response = await fetch(`http://localhost:3000/api/notes/${noteId}`, {
+        const response = await fetch(`https://jimiat10.onrender.com/api/notes/${noteId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message, signature })
