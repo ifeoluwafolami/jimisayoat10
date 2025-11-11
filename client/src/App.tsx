@@ -125,7 +125,7 @@ const HeroSection = () => {
     const heroContent = (
         <div className="text-text text-center font-carattere flex flex-col justify-center items-center">
             <p className="text-lg font-liberty lg:text-3xl text-dark-pink px-4 italic tracking-widest -mt-8 mb-8">
-                01 - 07 - 2025
+                12 - 11 - 2025
             </p>
             <h1 className="text-5xl leading-tight mb-4">
                 Princess Jimisayo
